@@ -1,0 +1,25 @@
+{% extends 'main_pages/dashboard.html' %}
+{% block content %}
+<div class="container">
+    <form method="POST" action="{% url 'add_new_budget' %}" style="width:70%">
+        <h1>Add Budget</h1> <br>
+        {% csrf_token %}
+        <label class="form-label-wrapper">
+            <p class="form-label">Add Budget</p>
+            <input class="form-input" type="text" name="amount" placeholder="Enter Amount In ZAR" required>
+        </label>
+        <button class="form-btn primary-default-btn transparent-btn">Save</button>
+    </form>
+    <br>
+
+    {% for message in messages %}
+    <ul>
+      <li class="error_msg">{{message}}</li>
+    </ul>
+    {% endfor %}
+   
+
+</div>
+
+
+{% endblock content %}

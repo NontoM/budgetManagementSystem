@@ -1,0 +1,46 @@
+{% extends 'main_pages/base.html' %}
+{% block content %}
+<div class="container"> 
+<form method="POST" action="">
+      <h1>Register</h1>
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="exampleInputFirstname" class="form-label">Firstname</label>
+        <input type="text" class="form-control" name="fname" id="exampleInputFirstname" aria-describedby="fnamelHelp" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputLastname" class="form-label">Lastname</label>
+        <input type="text" class="form-control" name="lname" id="exampleInputLastname" aria-describedby="lnameHelp" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPhonenumber" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control" name="phone" id="exampleInputPhonenumber" aria-describedby="phoneHelp" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputAddress" class="form-label">Address</label>
+        <input type="text" class="form-control" name="address" id="exampleInputAddress" aria-describedby="addressHelp" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="exampleInputPassword1" required>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% for message in messages %}
+<ul>
+  <li class="error_msg">{{message}}</li>
+</ul>
+{% endfor %}
+  </div>
+
+  {% endblock content %}

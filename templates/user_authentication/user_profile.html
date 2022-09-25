@@ -1,0 +1,30 @@
+{% extends 'main_pages/dashboard.html' %}
+{% block content %}
+
+<div>
+    {% for customer_data in userdata %}
+
+    <center>
+        <h1><strong>Aval Balance: </strong> R {{customer_data.balance}}</h1>
+    </center>
+    <ol>
+        <li><strong>Firstname: </strong>{{customer_data.user.first_name}}</li><br>
+        <li><strong>Lastname: </strong>{{customer_data.user.last_name}}</li><br>
+        <li><strong>Phone: </strong>{{customer_data.phone}}</li><br>
+        <li><strong>Address: </strong>{{customer_data.address}}</li><br>
+        <li><strong>Username: </strong>{{customer_data.user.username}}</li><br>
+        <li><strong>Password: </strong>{{customer_data.user.password}}</li><br>
+
+    </ol>
+    {%endfor%}
+
+    <br>
+
+<!--<a href="{% url 'add_budget' %}">Add Budget</a> <br>
+<a href="{% url 'spend' %}">Spend Cash</a><br>
+<a href="{% url 'all_expenses' %}">All Expenses</a><br>
+
+
+<a href="{% url 'logout' %}">Logout</a>-->
+
+{% endblock content %}
