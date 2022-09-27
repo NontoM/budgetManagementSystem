@@ -9,10 +9,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <title>{% block title %}Budget Management App{% endblock title %} </title>
+    <style>
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="container">
+<body class="bg-light">
+   
         {% block header %}
         
         {% endblock header %}
@@ -26,7 +33,7 @@
         {% block footer %}
 
         {% endblock footer %}
-    </div>
+    
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"

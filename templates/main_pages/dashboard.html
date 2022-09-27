@@ -1,161 +1,107 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JustBudget Dashboard | Dashboard</title>
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="{% static './img/svg/logo.svg' %}" type="image/x-icon">
-  <!-- Custom styles -->
-  <link rel="stylesheet" href="{% static './css/style.min.css' %}">
-  {% block bootstrap5 %} {% endblock bootstrap5 %}
-</head>
-<body>
-  <div class="layer"></div>
-<!-- ! Body -->
-<a class="skip-link sr-only" href="#skip-target">Skip to content</a>
-<div class="page-flex">
-  <!-- ! Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-start">
-        <div class="sidebar-head">
-            <a href="/" class="logo-wrapper" title="Home">
-                <span class="sr-only">Home</span>
-                <span class="icon logo" aria-hidden="true"></span>
-                <div class="logo-text">
-                    <span class="logo-title">JustBudget</span>
-                    <span class="logo-subtitle">Dashboard</span>
-                </div>
-
-            </a>
-            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
-                <span class="sr-only">Toggle menu</span>
-                <span class="icon menu-toggle" aria-hidden="true"></span>
-            </button>
-        </div>
-        <div class="sidebar-body">
-            <ul class="sidebar-body-menu">
-                <li>
-                    <a class="active" href="/"><span class="icon home" aria-hidden="true"></span>Home</a>
-                </li>
-                <li>
-                    <a class="add-budget-btn" href="{% url 'add_budget' %}">
-                        <span class="icon document" aria-hidden="true"></span>Add Budget
-                        <span class="category__btn transparent-btn" title="Open list">
-                            <span class="sr-only">Open list</span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a class="spend-cash-btn" href="{% url 'spend' %}">
-                        <span class="icon folder" aria-hidden="true"></span>Spend Cash
-                    </a>
-                   
-                </li>
-                <li>
-                    <a class="all-expenses-btn" href="{% url 'all_expenses' %}">
-                        <span class="icon image" aria-hidden="true"></span>All Expenses
-                    </a>
-                    
-                </li>
-                
+   <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <title>Dashboard - Admin Bootstrap Template</title>
+      <meta name="robots" content="noindex, nofollow">
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+      <link href="{% static 'img/favicon.png' %}" rel="icon">
+      <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+      <link href="https://fonts.gstatic.com' %}" rel="preconnect">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+      <link href="{% static 'css/boxicons.min.css' %}" rel="stylesheet">
+      <link href="{% static 'css/quill.snow.css' %}" rel="stylesheet">
+      <link href="{% static 'css/quill.bubble.css' %}" rel="stylesheet">
+      <link href="{% static 'css/remixicon.css' %}" rel="stylesheet">
+      <link href="{% static 'css/simple-datatables.css' %}" rel="stylesheet">
+      <link href="{% static 'css/style.css' %}" rel="stylesheet">
+   </head>
+   <body>
+      <header id="header" class="header fixed-top d-flex align-items-center">
+          <div class="d-flex align-items-center justify-content-between"> <a href="/" class="logo d-flex align-items-center"> <img src="{% static 'img/logo.png' %}" alt=""> <span class="d-none d-lg-block">|JustBudget</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
+         <div class="search-bar">
+            <form class="search-form d-flex align-items-center" method="POST" action="#"> <input type="text" name="query" placeholder="Search" title="Enter search keyword"> <button type="submit" title="Search"><i class="bi bi-search"></i></button></form>
+         </div>
+         <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+               <li class="nav-item d-block d-lg-none"> <a class="nav-link nav-icon search-bar-toggle " href="#"> <i class="bi bi-search"></i> </a></li>
+               <li class="nav-item dropdown pe-3">
+                  <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="{% static 'img/profile-img.jpg' %}" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2"></span>{{user.first_name}}</a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                     <li class="dropdown-header">
+                        <h6>{{user.first_name}}<h6>
+                     </li>
+                     <li>
+                        <hr class="dropdown-divider">
+                     </li>
+                     <li> <a class="dropdown-item d-flex align-items-center" href="{% url 'user_profile' %}"> <i class="bi bi-person"></i> <span>My Profile</span> </a></li>
+                     <li>
+                        <hr class="dropdown-divider">
+                     </li>
+                     <li> <a class="dropdown-item d-flex align-items-center" href="users-profile.html"> <i class="bi bi-gear"></i> <span>Account Settings</span> </a></li>
+                     <li>
+                        <hr class="dropdown-divider">
+                     </li>
+                     <li> <a class="dropdown-item d-flex align-items-center" href="{% url 'logout' %}"> <i class="bi bi-box-arrow-right"></i> <span>Sign Out</span> </a></li>
+                  </ul>
+               </li>
             </ul>
-        </div>
-    </div>
-    <div class="sidebar-footer">
-        <a href="##" class="sidebar-user">
-            <span class="sidebar-user-img">
-                <picture><source srcset="{% static './img/avatar/avatar-illustrated-01.webp' %}" type="image/webp"><img src="./img/avatar/avatar-illustrated-01.png" alt="User name"></picture>
-            </span>
-            <div class="sidebar-user-info">
-                <span class="sidebar-user__title">Nafisa Sh.</span>
-                <span class="sidebar-user__subtitle">Support manager</span>
-            </div>
-        </a>
-    </div>
-</aside>
-  <div class="main-wrapper">
-    <!-- ! Main nav -->
-    <nav class="main-nav--bg">
-  <div class="container main-nav">
-    <div class="main-nav-start">
-      <div class="search-wrapper">
-        <i data-feather="search" aria-hidden="true"></i>
-        <input type="text" placeholder="Enter keywords ..." required>
-      </div>
-    </div>
-    <div class="main-nav-end">
-      <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
-        <span class="sr-only">Toggle menu</span>
-        <span class="icon menu-toggle--gray" aria-hidden="true"></span>
-      </button>
-      <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
-        <span class="sr-only">Switch theme</span>
-        <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
-        <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
-      </button>
-     
-      <div class="nav-user-wrapper">
-        <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
-          <span class="sr-only">My profile</span>
-          <span class="nav_user">{{user.first_name}} {{user.last_name}}</span>
-          <span class="nav-user-img">
-            <picture><source srcset="{% static './img/avatar/avatar-illustrated-02.webp' %}" type="image/webp"><img src="{% static './img/avatar/avatar-illustrated-02.png' %}" alt="User name"></picture>
-          </span>
-        </button>
-        <ul class="users-item-dropdown nav-user-dropdown dropdown">
-          <li><a href="{% url 'user_profile' %}">
-              <i data-feather="user" aria-hidden="true"></i>
-              <span>Profile</span>
-            </a></li>
-          <li><a href="##">
-              <i data-feather="settings" aria-hidden="true"></i>
-              <span>Account settings</span>
-            </a></li>
-          <li><a class="danger" href="{% url 'logout' %}">
-              <i data-feather="log-out" aria-hidden="true"></i>
-              <span>Log out</span>
-            </a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</nav>
-    <!-- ! Main -->
-    <main class="main users chart-page" id="skip-target">
-      <div class="container">
+         </nav>
+      </header>
+      <aside id="sidebar" class="sidebar">
+         <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item"> <a class="nav-link collapsed " href="/"> <i class="bi bi-grid"></i> <span>Home</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="{% url 'user_profile' %}"> <i class="bi bi-person"></i> <span>Profile</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="{% url 'add_budget' %}"> <i class="bi bi-question-circle"></i> <span>Add Budget</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="{% url 'spend' %}"> <i class="bi bi-envelope"></i> <span>Spend Cash</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="{% url 'all_expenses' %}"> <i class="bi bi-dash-circle"></i> <span>all_expenses</span> </a></li>
 
-        {% block content %}
+            <li class="nav-item"> <a class="nav-link collapsed" href="{% url 'register' %}"> <i class="bi bi-card-list"></i> <span>Register</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="{% url 'login' %}"> <i class="bi bi-box-arrow-in-right"></i> <span>Login</span> </a></li>
+         </ul>
+      </aside>
+      <main id="main" class="main">
+         <div class="pagetitle">
+          {% block pagetitle %}
+            {% endblock pagetitle %}
+            <nav>
+               <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  {% block pagecrumb %}
+                  {% endblock pagecrumb %}
+            </li>
 
-        {% endblock content %}
- 
-      </div>
-    </main>
-    <!-- ! Footer -->
-    <footer class="footer">
-  <div class="container footer--flex">
-    <div class="footer-start">
-      <p>2021 © justBudget Dashboard - <a href="#" target="_blank"
-          rel="noopener noreferrer">JustBudget.com</a></p>
-    </div>
-    <ul class="footer-end">
-      <li><a href="{% url 'index' %}">Home</a></li>
-      <li><a href="{% url 'index' %}">Home</a></li>
-      <li><a href="{% url 'index' %}">Home</a></li>
-    </ul>
-  </div>
-</footer>
-  </div>
-</div>
-<!-- Chart library -->
-<script src="{% static './plugins/chart.min.js' %}"></script>
-<!-- Icons li{% static 'brary -->
-<script src="{% static 'plugins/feather.min.js' %}"></script>
-<!-- Custom s{% static 'cripts -->
-<script src="{% static 'js/script.js' %}"></script>
-</body>
-
+                  <li class="breadcrumb-item active">
+                    {% block breadcrumb-item %}
+                    {% endblock breadcrumb-item %}
+                  </li>
+               </ol>
+            </nav>
+         </div>
+         
+            {% block content %}
+            {% endblock content %}
+         
+      </main>
+      <footer id="footer" class="footer">
+         <div class="copyright"> &copy; Copyright <strong><span>|JustBudget</span></strong>. All Rights Reserved</div>
+         <!--<div class="credits"> with love <a href="https://freeetemplates.com/">FreeeTemplates</a></div>-->
+      </footer>
+      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>  
+        <script src="{% static 'js/apexcharts.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/chart.min.js' %}"></script>
+        <script src="{% static 'js/echarts.min.js' %}"></script>
+        <script src="{% static 'js/quill.min.js' %}"></script>
+        <script src="{% static 'js/simple-datatables.js' %}"></script>
+        <script src="{% static 'js/tinymce.min.js' %}"></script>
+        <script src="{% static 'js/validate.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script> 
+             
+   </body>
 </html>

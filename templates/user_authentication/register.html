@@ -1,7 +1,9 @@
 {% extends 'main_pages/base.html' %}
 {% block content %}
+{% include 'main_pages/navbar.html' %}
+<br>
 <div class="container"> 
-<form method="POST" action="">
+<form method="POST" action="{% url 'register_auth'%}">
       <h1>Register</h1>
       {% csrf_token %}
       <div class="mb-3">

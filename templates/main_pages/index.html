@@ -1,2 +1,139 @@
 {% load static %}
-{% include 'main_pages/navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <title>Dashboard - Admin Bootstrap Template</title>
+      <meta name="robots" content="noindex, nofollow">
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+      <link href="{% static 'img/favicon.png' %}" rel="icon">
+      <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+      <link href="https://fonts.gstatic.com' %}" rel="preconnect">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+      <link href="{% static 'css/boxicons.min.css' %}" rel="stylesheet">
+      <link href="{% static 'css/quill.snow.css' %}" rel="stylesheet">
+      <link href="{% static 'css/quill.bubble.css' %}" rel="stylesheet">
+      <link href="{% static 'css/remixicon.css' %}" rel="stylesheet">
+      <link href="{% static 'css/simple-datatables.css' %}" rel="stylesheet">
+      <link href="{% static 'css/style.css' %}" rel="stylesheet">
+   </head>
+   <style>
+    .hero-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    #hero{
+        padding-top: 60px;
+    }
+</style>
+   <body>
+    <!--
+      <header id="header" class="header fixed-top d-flex align-items-center">
+          <div class="d-flex align-items-center justify-content-between"> <a href="/" class="logo d-flex align-items-center"> <img src="{% static 'img/logo.png' %}" alt=""> <span class="d-none d-lg-block">|JustBudget</span> </a></div>
+         <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+               <li class="nav-item d-block d-lg-none"><a class="nav-link nav-icon search-bar-toggle " href="#"> <i class="bi bi-search"></i> </a></li>
+               <li class="nav-item dropdown pe-3">
+                  <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> <img src="{% static 'img/profile-img.jpg' %}" alt="Profile" class="rounded-circle"> <span class="d-none d-md-block dropdown-toggle ps-2"></span>{{user.first_name}}</a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                     <li class="dropdown-header">
+                        <h6>{{user.first_name}}<h6>
+                     </li>
+                     <li>
+                        <hr class="dropdown-divider">
+                     </li>
+                     <li> <a class="dropdown-item d-flex align-items-center" href="{% url 'user_profile' %}"> <i class="bi bi-person"></i> <span>My Profile</span> </a></li>
+                     <li>
+                        <hr class="dropdown-divider">
+                     </li>
+                     <li> <a class="dropdown-item d-flex align-items-center" href="users-profile.html"> <i class="bi bi-gear"></i> <span>Account Settings</span> </a></li>
+                     <li>
+                        <hr class="dropdown-divider">
+                     </li>
+                     <li> <a class="dropdown-item d-flex align-items-center" href="{% url 'logout' %}"> <i class="bi bi-box-arrow-right"></i> <span>Sign Out</span> </a></li>
+                  </ul>
+               </li>
+            </ul>
+         </nav>
+
+         <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <div class="container">
+    <a class="navbar-brand" href="/"><strong> | JUSTBUDGET</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+      </header>
+      -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+        <img src="{% static 'img/logo.png' %}" alt="Logo" width="30" height="24"  class="d-inline-block align-text-top">
+        <strong>| JustBudget</strong> 
+      </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<hr>
+
+    <main>
+    <div class="container" id="hero">
+        <div class="row justify-content-center"id="hero"> 
+            <div class="col-xl-5 col-lg-6 pt-5 justify-content-center">
+                <h1>An App That Takes Your Finances Very Seriously...</h1>
+                <p>Just Budget Online</p>  
+                <a class="btn btn-primary" href="{% url 'register' %}" role="button">Register</a>
+            </div>
+
+            <div class="col-md-6 pt-5">
+                <img src="{% static 'img/heroImg.png' %}" alt="Hero Img" class="hero-img">
+            </div>
+        </div>
+    </div>
+      </main>
+      <footer id="footer" class="footer">
+         <div class="copyright"> &copy; Copyright <strong><span>|JustBudget</span></strong>. All Rights Reserved</div>
+         <!--<div class="credits"> with love <a href="https://freeetemplates.com/">FreeeTemplates</a></div>-->
+      </footer>
+      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>  
+        <script src="{% static 'js/apexcharts.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/chart.min.js' %}"></script>
+        <script src="{% static 'js/echarts.min.js' %}"></script>
+        <script src="{% static 'js/quill.min.js' %}"></script>
+        <script src="{% static 'js/simple-datatables.js' %}"></script>
+        <script src="{% static 'js/tinymce.min.js' %}"></script>
+        <script src="{% static 'js/validate.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script> 
+             
+   </body>
+</html>

@@ -1,7 +1,7 @@
 {% extends 'main_pages/dashboard.html' %}
 {% block content %}
 
-    <form method="POST" action="{% url 'save_expenses' %}">
+    <!--<form method="POST" action="{% url 'save_expenses' %}">
         <h1>Add Expense</h1> <br>
         {% csrf_token %}
         <label class="form-label-wrapper">
@@ -14,7 +14,19 @@
         </label>
         <button class="form-btn primary-default-btn transparent-btn">Pay</button>
     </form>
-    <br>
+    <br>-->
+
+    <div class="card">
+        <div class="card-body">
+           <h5 class="card-title">Spend Budget</h5>
+           <form method="POST" action="{% url 'save_expenses' %}" class="row g-3">
+            {% csrf_token %}
+              <div class="col-12"> <label for="inputTitle" class="form-label">Title</label> <input type="text" name="title" class="form-control" id="inputTitle" required></div>
+              <div class="col-12"> <label for="inputAmount" class="form-label">Add Expense</label> <input type="number" name="amount" class="form-control" id="inputAmount" required></div>
+              <div class="text-center"> <button type="submit" class="btn btn-primary">Pay</button> <button type="reset" class="btn btn-secondary">Reset</button></div>
+           </form>
+        </div>
+     </div>
 
     {% for message in messages %}
     <ul>

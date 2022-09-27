@@ -9,7 +9,13 @@ from django.contrib.auth.decorators import login_required
 
 # user_authentication views.
 
-@transaction.atomic
+
+#a method that pass the request and return render the requested template/data
+def register(request):
+    #the purpose of the method is to return render via request method the template
+    return render(request, '../templates/user_authentication/register.html', {}) #{}, if you pass data via html template it should be in dict format
+
+@transaction.atomic #treat transaction as a block, should any of the conditions fail,the whole transaction fails
 def user_registerView(request):
     #check if the current request from a user was performed using HTTp "POST" method
     if request.method == 'POST' and request.POST['fname'] and request.POST['lname']  and request.POST['phone'] and request.POST['address'] and request.POST['email'] and request.POST['password']:
@@ -21,22 +27,24 @@ def user_registerView(request):
         password = request.POST['password']
         #create user
         user = User.objects.create_user(username=email, first_name=first_name, last_name=last_name, password=password)
-        #if user is created
-        if user is not None:
+        #if user is not created    
+        if not user:
+            return HttpResponse('Account not created')
+        #otherwise, user is created
+        else:
+            #save Customer info
             save_info = Customer(user=user, phone=phone, address=address)
             save_info.save()
             messages.success(request,'Account created successfully')
-            return redirect('register')
-        else:
-            messages.error(request, 'Account not created')
-            return redirect('register')
+            return redirect('login')               
     else:
-        messages.error(request,'All fields must be filled')
+        messages.error(request, 'All fields must be filled')
+        return render(request, '../templates/user_authentication/register.html')
     
-    return render(request, '../templates/user_authentication/register.html')
+def login_view(request):
+    return render(request, '../templates/user_authentication/login.html')
 
-    
-def user_loginView(request):
+def login_authView(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -45,10 +53,10 @@ def user_loginView(request):
             login(request, user)
             return redirect('user_profile')          
         else:
-            messages.error(request,'Wrong credentials')
-    
-    return render(request, '../templates/user_authentication/login.html')
-
+            return HttpResponse(request,'Wrong credentials')   
+    else:
+        return redirect('login')          
+   
 
 @login_required(login_url='login')
 def user_profileView(request):
@@ -65,11 +73,6 @@ def user_profileView(request):
 def add_budgetView(request):
     return render(request, '../templates/user_authentication/add.html', {})
 
-
-@login_required(login_url='login')
-def add_new_budgetView(request):
-    return render(request, '../templates/user_authentication/add.html', {})
-
 @login_required(login_url='login')
 def add_new_budgetView(request):
     #check if a user is authenticated
@@ -81,13 +84,15 @@ def add_new_budgetView(request):
             loginuser = request.user
             #fetching login user current balance
             current_balance = Customer.objects.values_list('balance', flat=True).get(user=loginuser)
-            #check if there is an existing balance
-            if current_balance:
-                newbalance = amount + current_balance
-                Customer.objects.filter(user=loginuser).update(balance=newbalance)
+            #add amount and existing balance to get newbalance
+            newbalance = amount + current_balance
+            #fetch Customer data of the login user and update it
+            Customer.objects.filter(user=loginuser).update(balance=newbalance)
+        #if all conditions are true, return a success message   
         messages.success(request,'Budget has been saved successfully')
         return redirect('add_budget')        
     else:
+        messages.error(request,'Sorry, budget could not be saved')
         return redirect('login')
 
 

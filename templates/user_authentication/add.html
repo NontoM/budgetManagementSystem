@@ -1,25 +1,21 @@
 {% extends 'main_pages/dashboard.html' %}
 {% block content %}
-<div class="container">
-    <form method="POST" action="{% url 'add_new_budget' %}" style="width:70%">
-        <h1>Add Budget</h1> <br>
-        {% csrf_token %}
-        <label class="form-label-wrapper">
-            <p class="form-label">Add Budget</p>
-            <input class="form-input" type="text" name="amount" placeholder="Enter Amount In ZAR" required>
-        </label>
-        <button class="form-btn primary-default-btn transparent-btn">Save</button>
-    </form>
-    <br>
 
-    {% for message in messages %}
+ <div class="card">
+    <div class="card-body">
+       <h5 class="card-title">Add Budget</h5>
+       <form method="POST" action="{% url 'add_new_budget' %}" class="row g-3">
+        {% csrf_token %}
+          <div class="col-12"> <label for="inputAmount" class="form-label">Add Budget</label> <input type="number" name="amount" class="form-control" id="inputAmount" required></div>
+          <div class="text-center"> <button type="submit" class="btn btn-primary">Save</button> <button type="reset" class="btn btn-secondary">Reset</button></div>
+       </form>
+    </div>
+ </div>
+ {% for message in messages %}
     <ul>
       <li class="error_msg">{{message}}</li>
     </ul>
     {% endfor %}
-   
-
-</div>
 
 
 {% endblock content %}
